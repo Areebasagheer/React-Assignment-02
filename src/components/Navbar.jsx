@@ -1,33 +1,238 @@
-import React from 'react'
+// import * as React from 'react';
+// import PropTypes from 'prop-types';
+// import AppBar from '@mui/material/AppBar';
+// import Box from '@mui/material/Box';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import Divider from '@mui/material/Divider';
+// import Drawer from '@mui/material/Drawer';
+// import IconButton from '@mui/material/IconButton';
+// import List from '@mui/material/List';
+// import ListItem from '@mui/material/ListItem';
+// import ListItemButton from '@mui/material/ListItemButton';
+// import ListItemText from '@mui/material/ListItemText';
+// import MenuIcon from '@mui/icons-material/Menu';
+// import Toolbar from '@mui/material/Toolbar';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
 
-function Navbar() {
+
+//   const drawerWidth = 240;
+// const navItems = ['Home', 'About', 'Contact'];
+
+// function DrawerAppBar(props) {
+//   const { window } = props;
+//   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+//   const handleDrawerToggle = () => {
+//     setMobileOpen((prevState) => !prevState);
+//   };
+
+//   const drawer = (
+//     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+//       <Typography variant="h6" sx={{ my: 2 }}>
+//         MUI
+//       </Typography>
+//       <Divider />
+//       <List>
+//         {navItems.map((item) => (
+//           <ListItem key={item} disablePadding>
+//             <ListItemButton sx={{ textAlign: 'center' }}>
+//               <ListItemText primary={item} />
+//             </ListItemButton>
+//           </ListItem>
+//         ))}
+//       </List>
+//     </Box>
+//   );
+
+//   const container = window !== undefined ? () => window().document.body : undefined;
+
+//   return (
+//     <>
+//     <Box sx={{ display: 'flex' }}>
+//       <CssBaseline />
+//       <AppBar component="nav">
+//         <Toolbar>
+//           <IconButton
+//             color="inherit"
+//             aria-label="open drawer"
+//             edge="start"
+//             onClick={handleDrawerToggle}
+//             sx={{ mr: 2, display: { sm: 'none' } }}
+//           >
+//             <MenuIcon />
+//           </IconButton>
+//           <Typography
+//             variant="h6"
+//             component="div"
+//             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+//           >
+//             MUI
+//           </Typography>
+//           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+//             {navItems.map((item) => (
+//               <Button key={item} sx={{ color: '#fff' }}>
+//                 {item}
+//               </Button>
+//             ))}
+//           </Box>
+//         </Toolbar>
+//       </AppBar>
+//       <nav>
+//         <Drawer
+//           container={container}
+//           variant="temporary"
+//           open={mobileOpen}
+//           onClose={handleDrawerToggle}
+//           ModalProps={{
+//             keepMounted: true, // Better open performance on mobile.
+//           }}
+//           sx={{
+//             display: { xs: 'block', sm: 'none' },
+//             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+//           }}
+//         >
+//           {drawer}
+//         </Drawer>
+//       </nav>
+//       <Box component="main" sx={{ p: 3 }}>
+//         <Toolbar />
+//       </Box>
+//     </Box>
+//     </>
+//   );
+// }
+
+// DrawerAppBar.propTypes = {
+//   /**
+//    * Injected by the documentation to work in an iframe.
+//    * You won't need it on your project.
+//    */
+//   window: PropTypes.func,
+// };
+
+// export default DrawerAppBar
+
+
+
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
+const drawerWidth = 240;
+const navItems = ['Home', 'Products', 'Orders'];
+
+function Navbar(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        MUI
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemText primary={item} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  const container = typeof window !== 'undefined' ? () => window.document.body : undefined;
+
   return (
-    <>
-    <div className='bg-secondary-subtle'>
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar component="nav">
+        <Toolbar>
 
-      <div className="container">
-        <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 me-4 sticky-top">
-          <div className="col-md-3 mb-2 mb-md-0">
-            <a class="navbar-brand text-body-emphasis fs-5" href="#">
-              <img src="/img/logo_shop-removebg-preview.png" alt="Logo" width=" 210" height="100" class="d-inline-block mx-2" />
-            </a>
-          </div>
-
-          <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" className="nav-link home px-5 text-body-emphasis">Home</a></li>
-            <li><a href="#" className="nav-link home px-5 text-body-emphasis">Categories</a></li>
-            <li><a href="#" className="nav-link home px-5 text-body-emphasis">Men's</a></li>
-            <li><a href="#" className="nav-link home px-5 text-body-emphasis">Women's</a></li>
-            <li><a href="#" className="nav-link home px-5 text-body-emphasis">Jewelry</a></li>
-          </ul>
-
-        </header>
-      </div>
-      </div>
+        <Box
+          component="img"
+          src="/img/logo_shop-removebg-preview.png" // Replace with your logo URL
+          alt="Logo"
+          sx={{ height: 50, marginRight: 2 }}
+        />
 
 
-    </>
-  )
+
+
+
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+           <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+           >
+            {/* {/* MUI} */}
+           </Typography>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            {navItems.map((item) => (
+              <Button key={item} sx={{ color: '#fff' }}>
+                {item}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <nav>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true,
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </nav>
+      
+        <Toolbar />
+     
+    </Box>
+  );
 }
 
-export default Navbar
+Navbar.propTypes = {
+  window: PropTypes.func,
+};
+
+export default Navbar;
+
+ 

@@ -47,7 +47,7 @@ function Cards() {
                   <Card.Body>
                       <Card.Title>{item.title}</Card.Title>
                       <Card.Text>
-                          {item.description.substring(0, 100)}...
+                          {item.description}
                       </Card.Text>
                       <Button variant="primary">Buy Now</Button>
                   </Card.Body>
