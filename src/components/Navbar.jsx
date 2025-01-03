@@ -55,9 +55,9 @@ function Navbar(props) {
 
         <Box
           component="img"
-          src="/img/images.png" // Replace with your logo URL
+          src="/img/img.png" // Replace with your logo URL
           alt="Logo"
-          sx={{ height: 190, width: 200, marginRight: 2 }}
+          sx={{ height: 100, width: 150, marginRight: 2 }}
         />
 
 
